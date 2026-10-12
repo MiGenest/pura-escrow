@@ -1,5 +1,9 @@
 # Pura — escrowed freight payment on Solana
 
+This repository is a clean extract of the escrow demo from our private dispatch codebase: the Solana program, the
+mobile app and the server routes the demo uses. It is published for hackathon judging. The full development history
+stays private because it contains our live business.
+
 Copyright (c) 2026 PURA. All rights reserved. This source is published for hackathon judging only. No permission is granted to use, copy, modify or distribute it without written consent.
 
 A shipper's USDC is locked in an account that the program owns. The carrier is paid when the load is delivered, by a
@@ -106,3 +110,28 @@ The app talks to Solana devnet and to the live worker at https://pura.misha-9f1.
 - **Single keypairs** hold the program's upgrade authority and the arbitrator role. Both need a multisig and a
   timelock before real money; `constants.rs` records this.
 - **No fiat off-ramp.** USDC paid out stays USDC.
+
+## Development history
+
+The dates come from the private repository's history.
+
+**Before 14 September 2026:**
+- **The escrow program.** All seven instructions were written between 23 August and 11 September.
+- **The worker's demo routes,** from 26 August:
+  - profiles and bookings;
+  - wallet-signed messages;
+  - the fee payer's countersignature, with its instruction allowlist, rate limits and daily cap;
+  - recording accepts, outcomes and history;
+  - signed reads.
+- Before 14 September the client was a web app; it is not part of this repository.
+
+**During the hackathon, 14 September – 12 October 2026:**
+- **The mobile app,** built from scratch between 17 and 26 September.
+- **The program:** one change, on 15 September: checked token transfers, and guards against a shipper accepting their
+  own load and against duplicate accounts.
+- **The worker's demo routes,** between 14 September and 1 October:
+  - a corridor classification for bookings;
+  - security hardening of how contact details are read and how bookings are written.
+- **For this public copy, on 12 October:** the worker's on-chain check of a booking's carrier.
+
+The full development history lives in our private repository.
