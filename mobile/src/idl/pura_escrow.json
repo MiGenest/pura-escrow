@@ -1,0 +1,1785 @@
+{
+  "address": "2eUXsNeT5oCk5Q6NGg6ZXC8Y5Yc3p8DguBBsDzEBiGXt",
+  "metadata": {
+    "name": "pura_escrow",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "accept",
+      "discriminator": [
+        65,
+        150,
+        70,
+        216,
+        133,
+        6,
+        107,
+        4
+      ],
+      "accounts": [
+        {
+          "name": "carrier",
+          "signer": true
+        },
+        {
+          "name": "booking",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel",
+      "discriminator": [
+        232,
+        219,
+        223,
+        41,
+        219,
+        236,
+        220,
+        190
+      ],
+      "accounts": [
+        {
+          "name": "shipper",
+          "signer": true,
+          "relations": [
+            "booking"
+          ]
+        },
+        {
+          "name": "booking",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "arg",
+                "path": "booking_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_payer",
+          "writable": true,
+          "signer": true,
+          "address": "DLYBFc7WpiZes9zAL5Az37sXTANAzK7xyUCMR9HHLpys"
+        },
+        {
+          "name": "escrow_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "booking"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "shipper_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "address": "DABiRdamfNZuxWaTHHWvKuMUW7TP6fmHdRXuPfr5duws"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "booking_id",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "dispute",
+      "discriminator": [
+        216,
+        92,
+        128,
+        146,
+        202,
+        85,
+        135,
+        73
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "booking",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "shipper",
+          "signer": true
+        },
+        {
+          "name": "fee_payer",
+          "writable": true,
+          "signer": true,
+          "address": "DLYBFc7WpiZes9zAL5Az37sXTANAzK7xyUCMR9HHLpys"
+        },
+        {
+          "name": "booking",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "arg",
+                "path": "booking_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "mint",
+          "address": "DABiRdamfNZuxWaTHHWvKuMUW7TP6fmHdRXuPfr5duws"
+        },
+        {
+          "name": "shipper_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "escrow_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "booking"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "booking_id",
+          "type": "u64"
+        },
+        {
+          "name": "pickup_lat",
+          "type": "i32"
+        },
+        {
+          "name": "pickup_lng",
+          "type": "i32"
+        },
+        {
+          "name": "dropoff_lat",
+          "type": "i32"
+        },
+        {
+          "name": "dropoff_lng",
+          "type": "i32"
+        },
+        {
+          "name": "pickup_date",
+          "type": "i64"
+        },
+        {
+          "name": "dropoff_date",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "mark_delivered",
+      "discriminator": [
+        240,
+        118,
+        188,
+        142,
+        64,
+        85,
+        107,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "carrier",
+          "signer": true,
+          "relations": [
+            "booking"
+          ]
+        },
+        {
+          "name": "booking",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "release",
+      "discriminator": [
+        253,
+        249,
+        15,
+        206,
+        28,
+        127,
+        193,
+        241
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "shipper",
+          "docs": [
+            "not read otherwise."
+          ],
+          "relations": [
+            "booking"
+          ]
+        },
+        {
+          "name": "booking",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "arg",
+                "path": "booking_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_payer",
+          "writable": true,
+          "signer": true,
+          "address": "DLYBFc7WpiZes9zAL5Az37sXTANAzK7xyUCMR9HHLpys"
+        },
+        {
+          "name": "escrow_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "booking"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "carrier_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "carrier"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "treasury_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  156,
+                  147,
+                  145,
+                  138,
+                  124,
+                  58,
+                  4,
+                  24,
+                  114,
+                  23,
+                  172,
+                  122,
+                  97,
+                  19,
+                  53,
+                  83,
+                  76,
+                  246,
+                  113,
+                  19,
+                  228,
+                  207,
+                  139,
+                  97,
+                  87,
+                  243,
+                  202,
+                  31,
+                  168,
+                  109,
+                  35,
+                  164
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "address": "DABiRdamfNZuxWaTHHWvKuMUW7TP6fmHdRXuPfr5duws"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "booking_id",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "resolve_dispute",
+      "discriminator": [
+        231,
+        6,
+        202,
+        6,
+        96,
+        103,
+        12,
+        230
+      ],
+      "accounts": [
+        {
+          "name": "arbitrator",
+          "signer": true
+        },
+        {
+          "name": "shipper",
+          "relations": [
+            "booking"
+          ]
+        },
+        {
+          "name": "booking",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "arg",
+                "path": "booking_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_payer",
+          "writable": true,
+          "signer": true,
+          "address": "DLYBFc7WpiZes9zAL5Az37sXTANAzK7xyUCMR9HHLpys"
+        },
+        {
+          "name": "escrow_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "booking"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "shipper_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "shipper"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "carrier_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "carrier"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "treasury_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  156,
+                  147,
+                  145,
+                  138,
+                  124,
+                  58,
+                  4,
+                  24,
+                  114,
+                  23,
+                  172,
+                  122,
+                  97,
+                  19,
+                  53,
+                  83,
+                  76,
+                  246,
+                  113,
+                  19,
+                  228,
+                  207,
+                  139,
+                  97,
+                  87,
+                  243,
+                  202,
+                  31,
+                  168,
+                  109,
+                  35,
+                  164
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "booking.mint",
+                "account": "Booking"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "address": "DABiRdamfNZuxWaTHHWvKuMUW7TP6fmHdRXuPfr5duws"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "booking_id",
+          "type": "u64"
+        },
+        {
+          "name": "carrier_bps",
+          "type": "u16"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Booking",
+      "discriminator": [
+        147,
+        50,
+        61,
+        138,
+        208,
+        21,
+        254,
+        156
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Only the counter authority can update this counter"
+    },
+    {
+      "code": 6001,
+      "name": "CounterOverflow",
+      "msg": "Counter has reached the maximum value"
+    },
+    {
+      "code": 6002,
+      "name": "AlreadyClaimed",
+      "msg": "Booking has already been claimed by a carrier"
+    },
+    {
+      "code": 6003,
+      "name": "NotOpen",
+      "msg": "Booking must be Open (unclaimed) for this action"
+    },
+    {
+      "code": 6004,
+      "name": "TreasuryNotConfigured",
+      "msg": "Platform treasury is not configured — PLATFORM_TREASURY in constants.rs is still the placeholder value"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidFeeSplit",
+      "msg": "Fee calculation overflowed or produced an invalid split"
+    },
+    {
+      "code": 6006,
+      "name": "CannotCancelClaimed",
+      "msg": "A claimed booking can only be cancelled through dispute(), not cancel() — cancel() is shipper-only, unclaimed-only"
+    },
+    {
+      "code": 6007,
+      "name": "NotAccepted",
+      "msg": "Booking must be in Accepted status for this action"
+    },
+    {
+      "code": 6008,
+      "name": "NotDelivered",
+      "msg": "Booking must be in Delivered status for this action"
+    },
+    {
+      "code": 6009,
+      "name": "NotReleasable",
+      "msg": "Booking must be Accepted or Delivered to be released"
+    },
+    {
+      "code": 6010,
+      "name": "NotDisputable",
+      "msg": "Booking must be Accepted or Delivered to be disputed"
+    },
+    {
+      "code": 6011,
+      "name": "NotDisputed",
+      "msg": "Booking must be in Disputed status to be resolved"
+    },
+    {
+      "code": 6012,
+      "name": "NotShipperOrCarrier",
+      "msg": "Only the shipper or the carrier on this booking can do this"
+    },
+    {
+      "code": 6013,
+      "name": "ReviewWindowNotElapsed",
+      "msg": "The shipper's review window hasn't elapsed yet — only the shipper can release before then"
+    },
+    {
+      "code": 6014,
+      "name": "InvalidResolutionSplit",
+      "msg": "carrier_bps must be between 0 and 10000"
+    },
+    {
+      "code": 6015,
+      "name": "ArbitratorNotConfigured",
+      "msg": "Dispute arbitrator is not configured — ARBITRATOR in constants.rs is still the placeholder value"
+    },
+    {
+      "code": 6016,
+      "name": "MintNotConfigured",
+      "msg": "Expected USDC mint is not configured — EXPECTED_USDC_MINT in constants.rs is still the placeholder value"
+    },
+    {
+      "code": 6017,
+      "name": "MintMismatch",
+      "msg": "Token mint does not match this deployment's configured USDC mint"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidFeePayer",
+      "msg": "fee_payer must be this deployment's configured sponsoring wallet — it receives the rent it originally paid"
+    },
+    {
+      "code": 6019,
+      "name": "SelfAccept",
+      "msg": "Shipper cannot accept their own booking"
+    },
+    {
+      "code": 6020,
+      "name": "DuplicateAccount",
+      "msg": "Two distinct accounts were supplied with the same address"
+    }
+  ],
+  "types": [
+    {
+      "name": "Booking",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "booking_id",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "shipper",
+            "type": "pubkey"
+          },
+          {
+            "name": "carrier",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "pickup_lat",
+            "type": "i32"
+          },
+          {
+            "name": "pickup_lng",
+            "type": "i32"
+          },
+          {
+            "name": "dropoff_lat",
+            "type": "i32"
+          },
+          {
+            "name": "dropoff_lng",
+            "type": "i32"
+          },
+          {
+            "name": "pickup_date",
+            "type": "i64"
+          },
+          {
+            "name": "dropoff_date",
+            "type": "i64"
+          },
+          {
+            "name": "delivered_at",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "ARBITRATOR",
+      "type": "pubkey",
+      "value": "6TuPZv8D1KXMazkoJLCnBvS93kTW91ExZHre1SG7p4Wq"
+    },
+    {
+      "name": "ARBITRATOR_PLACEHOLDER",
+      "type": "pubkey",
+      "value": "3PBz4h9uUwrGWyv8xVwzKjmtjpEYw3M65V4jsftjrsHR"
+    },
+    {
+      "name": "BPS_DENOMINATOR",
+      "type": "u64",
+      "value": "10000"
+    },
+    {
+      "name": "COUNTER_SEED",
+      "type": "bytes",
+      "value": "[99, 111, 117, 110, 116, 101, 114]"
+    },
+    {
+      "name": "EXPECTED_FEE_PAYER",
+      "type": "pubkey",
+      "value": "DLYBFc7WpiZes9zAL5Az37sXTANAzK7xyUCMR9HHLpys"
+    },
+    {
+      "name": "EXPECTED_USDC_MINT",
+      "type": "pubkey",
+      "value": "DABiRdamfNZuxWaTHHWvKuMUW7TP6fmHdRXuPfr5duws"
+    },
+    {
+      "name": "EXPECTED_USDC_MINT_PLACEHOLDER",
+      "type": "pubkey",
+      "value": "6xWSykQ6zo5P5cuCX4QTTcMAwRhrsGKmcRSvWJSJWBt1"
+    },
+    {
+      "name": "HELLO_WORLD_LAMPORTS",
+      "type": "u64",
+      "value": "1"
+    },
+    {
+      "name": "MAX_COUNT",
+      "type": "u64",
+      "value": "10"
+    },
+    {
+      "name": "PLATFORM_FEE_BPS",
+      "type": "u64",
+      "value": "500"
+    },
+    {
+      "name": "PLATFORM_TREASURY",
+      "type": "pubkey",
+      "value": "BYD7T4wXX7dz2MgozMa2hqyTMsg5k32S8ikrxZ8t5gLj"
+    },
+    {
+      "name": "PLATFORM_TREASURY_PLACEHOLDER",
+      "type": "pubkey",
+      "value": "2GNkLeKLvg17YG6CzeooXqrav5cQV4Zj8E1D75JsfNqT"
+    },
+    {
+      "name": "REVIEW_WINDOW_SECS",
+      "type": "i64",
+      "value": "172800"
+    },
+    {
+      "name": "STATUS_ACCEPTED",
+      "type": "u8",
+      "value": "1"
+    },
+    {
+      "name": "STATUS_DELIVERED",
+      "type": "u8",
+      "value": "2"
+    },
+    {
+      "name": "STATUS_DISPUTED",
+      "type": "u8",
+      "value": "3"
+    },
+    {
+      "name": "STATUS_OPEN",
+      "type": "u8",
+      "value": "0"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# Copy this file to .dev.vars and fill it in; `npx wrangler dev` reads .dev.vars. Never commit .dev.vars.
+
+# The fee payer wallet's key, as the JSON array of 64 numbers that a Solana keypair file holds.
+FEE_PAYER_SECRET=
+# Mint address of the SPL token that bookings are paid in (the escrow's USDC mint on your cluster).
+USDC_MINT=
+# Optional: the most lamports the fee payer may spend per UTC day, all wallets together; empty means 1000000000.
+FEE_PAYER_DAILY_CAP_LAMPORTS=
+# Optional: the Solana RPC endpoint; empty means Solana's public devnet RPC, which is fine locally. A deployed worker needs an endpoint that accepts requests from Cloudflare, because the public one refuses Cloudflare's IPs.
+SOLANA_RPC_URL=

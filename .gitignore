@@ -1,0 +1,19 @@
+# Anchor / Rust
+target/
+.anchor/
+test-ledger/
+
+# Node
+node_modules/
+
+# Local configuration and secrets — never committed
+.env
+.env.*
+!.env.example
+.dev.vars
+!.dev.vars.example
+.wrangler/
+*.pem
+*-keypair.json
+
+.DS_Store
